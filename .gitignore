@@ -4,15 +4,16 @@
 *.tfstate.*
 *.tfvars
 crash.log
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
 .terraform.lock.hcl
+
+# Mac
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Python
+__pycache__/
 
 # Ansible
 *.retry
-
-# OS / IDE
-.DS_Store
-.vscode/
