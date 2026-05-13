@@ -254,7 +254,7 @@ resource "aws_instance" "mongo" {
 
   root_block_device {
     encrypted   = true
-    volume_size = 10
+    volume_size = 30
     volume_type = "gp3"
   }
 
