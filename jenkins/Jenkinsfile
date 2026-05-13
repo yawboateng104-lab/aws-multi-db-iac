@@ -76,23 +76,23 @@ pipeline {
     }
 
         stage('Manual Approval Before Apply') {
-    steps {
-        input message: 'Apply Terraform infrastructure changes?', ok: 'Apply'
-    }
+            steps {
+                input message: 'Apply Terraform infrastructure changes?', ok: 'Apply'
+            }
         }
 
-stage('Terraform Apply') {
-    steps {
-        sh '''
-            cd terraform
+        stage('Terraform Apply') {
+            steps {
+                sh '''
+                    cd terraform
 
-            terraform apply -auto-approve \
-              -var="my_ip_cidr=18.191.242.11/32" \
-              -var="key_name=ec2_ggle_shtskey" \
-              -var="db_password=TempPassword123!"
-        '''
-    }
-}
+                    terraform apply -auto-approve \
+                      -var="my_ip_cidr=18.191.242.11/32" \
+                      -var="key_name=ec2_ggle_shtskey" \
+                      -var="db_password=TempPassword123!"
+               '''
+            }
+        }    
 
     post {
         success {
