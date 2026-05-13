@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_DEFAULT_REGION = 'us-east-2'
+        TF_IN_AUTOMATION = 'true'
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Terraform Format Check') {
+            steps {
+                sh '''
+                    cd terraform
+                    terraform fmt -check -recursive
+                '''
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                sh '''
+                    cd terraform
+                    terraform init
+                '''
+            }
+        }
+
+        stage('Terraform Validate') {
+            steps {
+                sh '''
+                    cd terraform
+                    terraform validate
+                '''
+            }
+        }
+
+        stage('Checkov Security Scan') {
+            steps {
+                sh '''
+                    checkov -d terraform
+                '''
+            }
+        }
+
+        stage('tfsec Security Scan') {
+            steps {
+                sh '''
+                    tfsec terraform
+                '''
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                sh '''
+                    cd terraform
+                    terraform plan
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Terraform validation pipeline successful.'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check logs.'
+        }
+    }
+}
