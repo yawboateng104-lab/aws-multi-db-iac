@@ -237,8 +237,6 @@ resource "aws_db_instance" "mysql" {
   deletion_protection     = false
   skip_final_snapshot     = true
 
-  performance_insights_enabled = true
-
   tags = merge(local.common_tags, {
     Name = "${var.project_name}-mysql"
   })
