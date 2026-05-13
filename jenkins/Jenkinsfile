@@ -11,7 +11,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -70,10 +69,9 @@ pipeline {
                       -var="my_ip_cidr=18.191.242.11/32" \
                       -var="key_name=ec2_ggle_shtskey" \
                       -var="db_password=TempPassword123!"
-               '''
+                '''
             }
         }
-    }
 
         stage('Manual Approval Before Apply') {
             steps {
@@ -90,9 +88,10 @@ pipeline {
                       -var="my_ip_cidr=18.191.242.11/32" \
                       -var="key_name=ec2_ggle_shtskey" \
                       -var="db_password=TempPassword123!"
-               '''
+                '''
             }
-        }    
+        }
+    }
 
     post {
         success {
