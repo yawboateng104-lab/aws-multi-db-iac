@@ -1,0 +1,11 @@
+aws_region  = "us-east-1"
+project_name = "nbc-multidb"
+
+# Replace with your real public IP /32
+my_ip_cidr = "YOUR_PUBLIC_IP/32"
+
+# Use an existing EC2 key pair name in AWS
+key_name = "your-keypair-name"
+
+db_username = "dbadmin"
+db_password = "ChangeThisPassword123!"
