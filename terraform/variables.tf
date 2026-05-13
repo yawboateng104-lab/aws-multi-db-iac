@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "AWS region for infrastructure"
   type        = string
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "project_name" {
   description = "Project prefix"
   type        = string
-  default     = "nbc-multidb"
+  default     = "aws-multidb"
 }
 
 variable "my_ip_cidr" {

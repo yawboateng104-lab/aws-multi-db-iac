@@ -1,5 +1,5 @@
-aws_region  = "us-east-1"
-project_name = "nbc-multidb"
+aws_region  = "us-east-2"
+project_name = "aws-multidb"
 
 # Replace with your real public IP /32
 my_ip_cidr = "YOUR_PUBLIC_IP/32"
